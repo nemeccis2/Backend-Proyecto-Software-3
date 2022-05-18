@@ -1,10 +1,10 @@
-package uniquindio.conexionDatos.Services;
+package uniquindio.ControlDeAcceso.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import uniquindio.conexionDatos.DAO.LugarDao;
-import uniquindio.conexionDatos.Model.Lugar;
+import uniquindio.ControlDeAcceso.DAO.LugarDao;
+import uniquindio.ControlDeAcceso.Model.Lugar;
 
 import java.util.List;
 

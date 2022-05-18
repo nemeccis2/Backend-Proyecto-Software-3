@@ -1,6 +1,6 @@
-package uniquindio.conexionDatos.Services;
+package uniquindio.ControlDeAcceso.Services;
 
-import uniquindio.conexionDatos.Model.Rol;
+import uniquindio.ControlDeAcceso.Model.Rol;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,5 +11,5 @@ public interface RolService {
     public Rol save(Rol rol);
     public Rol findById(Integer id);
     public void delete(Integer id);
-    Optional<Rol>findByNombreRol(String nombreRol);
+    Optional<Rol> findByNombreRol(String nombreRol);
 }

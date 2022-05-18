@@ -1,6 +1,7 @@
-package uniquindio.conexionDatos.Services;
+package uniquindio.ControlDeAcceso.Services;
 
-import uniquindio.conexionDatos.Model.Usuario;
+
+import uniquindio.ControlDeAcceso.Model.Usuario;
 
 import java.util.List;
 import java.util.Optional;

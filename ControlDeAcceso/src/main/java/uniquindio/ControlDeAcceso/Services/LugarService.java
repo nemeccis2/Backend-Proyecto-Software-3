@@ -1,7 +1,6 @@
-package uniquindio.conexionDatos.Services;
+package uniquindio.ControlDeAcceso.Services;
 
-
-import uniquindio.conexionDatos.Model.Lugar;
+import uniquindio.ControlDeAcceso.Model.Lugar;
 
 import java.util.List;
 

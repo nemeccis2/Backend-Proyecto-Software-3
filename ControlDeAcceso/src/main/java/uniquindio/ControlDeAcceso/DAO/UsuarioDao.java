@@ -1,8 +1,9 @@
-package uniquindio.conexionDatos.DAO;
+package uniquindio.ControlDeAcceso.DAO;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import uniquindio.conexionDatos.Model.Usuario;
+import uniquindio.ControlDeAcceso.Model.Usuario;
+
 
 import java.util.Optional;
 

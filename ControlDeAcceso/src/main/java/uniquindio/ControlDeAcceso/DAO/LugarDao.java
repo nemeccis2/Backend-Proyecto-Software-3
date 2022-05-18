@@ -1,7 +1,7 @@
-package uniquindio.conexionDatos.DAO;
+package uniquindio.ControlDeAcceso.DAO;
 
 import org.springframework.data.repository.CrudRepository;
-import uniquindio.conexionDatos.Model.Lugar;
+import uniquindio.ControlDeAcceso.Model.Lugar;
 
 
 public interface LugarDao extends CrudRepository<Lugar, Integer> {

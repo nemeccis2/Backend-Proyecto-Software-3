@@ -1,7 +1,7 @@
-package uniquindio.conexionDatos.DAO;
+package uniquindio.ControlDeAcceso.DAO;
 
 import org.springframework.data.repository.CrudRepository;
-import uniquindio.conexionDatos.Model.Carrera;
+import uniquindio.ControlDeAcceso.Model.Carrera;
 
 public interface CarreraDao extends CrudRepository<Carrera, Integer> {
 

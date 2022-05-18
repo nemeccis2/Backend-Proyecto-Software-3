@@ -1,10 +1,10 @@
-package uniquindio.conexionDatos.Services;
+package uniquindio.ControlDeAcceso.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import uniquindio.conexionDatos.DAO.RolDao;
-import uniquindio.conexionDatos.Model.Rol;
+import uniquindio.ControlDeAcceso.DAO.RolDao;
+import uniquindio.ControlDeAcceso.Model.Rol;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,12 +1,12 @@
-package uniquindio.conexionDatos.Services;
+package uniquindio.ControlDeAcceso.Services;
 
 import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import uniquindio.conexionDatos.DAO.UsuarioDao;
-import uniquindio.conexionDatos.Model.Usuario;
 
 import org.springframework.transaction.annotation.Transactional;
+import uniquindio.ControlDeAcceso.DAO.UsuarioDao;
+import uniquindio.ControlDeAcceso.Model.Usuario;
 
 import java.util.List;
 import java.util.Optional;

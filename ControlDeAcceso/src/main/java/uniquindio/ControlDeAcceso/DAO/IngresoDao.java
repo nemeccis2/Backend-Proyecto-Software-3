@@ -1,7 +1,7 @@
-package uniquindio.conexionDatos.DAO;
+package uniquindio.ControlDeAcceso.DAO;
 
 import org.springframework.data.repository.CrudRepository;
-import uniquindio.conexionDatos.Model.Ingreso;
+import uniquindio.ControlDeAcceso.Model.Ingreso;
 
 public interface IngresoDao extends CrudRepository<Ingreso, Integer> {
     

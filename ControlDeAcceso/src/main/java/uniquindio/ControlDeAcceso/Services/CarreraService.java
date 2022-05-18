@@ -1,6 +1,7 @@
-package uniquindio.conexionDatos.Services;
+package uniquindio.ControlDeAcceso.Services;
 
-import uniquindio.conexionDatos.Model.Carrera;
+
+import uniquindio.ControlDeAcceso.Model.Carrera;
 
 import java.util.List;
 

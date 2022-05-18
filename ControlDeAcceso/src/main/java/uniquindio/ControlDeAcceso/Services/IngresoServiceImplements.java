@@ -1,10 +1,11 @@
-package uniquindio.conexionDatos.Services;
+package uniquindio.ControlDeAcceso.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import uniquindio.conexionDatos.DAO.IngresoDao;
-import uniquindio.conexionDatos.Model.Ingreso;
+import uniquindio.ControlDeAcceso.DAO.IngresoDao;
+import uniquindio.ControlDeAcceso.Model.Ingreso;
+
 
 import java.util.List;
 
