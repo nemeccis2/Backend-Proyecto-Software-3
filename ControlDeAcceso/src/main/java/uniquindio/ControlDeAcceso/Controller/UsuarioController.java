@@ -1,9 +1,9 @@
-package uniquindio.conexionDatos.Controller;
+package uniquindio.ControlDeAcceso.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import uniquindio.conexionDatos.Model.Usuario;
-import uniquindio.conexionDatos.Services.UsuarioService;
+import uniquindio.ControlDeAcceso.Model.Usuario;
+import uniquindio.ControlDeAcceso.Services.UsuarioService;
 
 import java.util.List;
 
