@@ -16,6 +16,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Usuario implements Serializable {
 

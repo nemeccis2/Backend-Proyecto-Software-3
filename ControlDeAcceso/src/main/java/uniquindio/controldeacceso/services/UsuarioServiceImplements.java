@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.transaction.annotation.Transactional;
 import uniquindio.controldeacceso.dao.UsuarioDao;
+import uniquindio.controldeacceso.exceptions.DatosInvalidosException;
+import uniquindio.controldeacceso.exceptions.UsuarioNoEncontradoException;
 import uniquindio.controldeacceso.model.Usuario;
 
 import java.util.List;
@@ -54,14 +56,14 @@ public class UsuarioServiceImplements implements UsuarioService {
     }
 
     @Override
-    public Usuario findByCorreoAndPassword(String correo, String password) throws Exception{
-        Usuario usuarioCorreo = usuarioDao.findByCorreo(correo).orElseThrow(() -> new Exception("Usuario incorrecto"));
+    public Usuario findByCorreoAndPassword(String correo, String password) throws UsuarioNoEncontradoException, DatosInvalidosException {
+        Usuario usuarioCorreo = usuarioDao.findByCorreo(correo).orElseThrow(() -> new UsuarioNoEncontradoException("Usuario incorrecto"));
         StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
 
         if(passwordEncryptor.checkPassword(password, usuarioCorreo.getPassword())){
             return usuarioCorreo;
         }else{
-            throw new Exception("Contraseña incorrecta");
+            throw new DatosInvalidosException("Contraseña incorrecta");
         }
     }
 }
