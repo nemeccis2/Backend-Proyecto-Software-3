@@ -69,4 +69,10 @@ public class IngresoController {
             throw new DatosInvalidosException("Datos invalidos");
         }
     }
+
+    //obtener un ingreso por cedula de usuario
+    @GetMapping("/ingresos/{cedula}-user")
+    public List<Ingreso> obtenerIngresosCedula(@PathVariable Integer cedula){
+        return ingresoService.findByCedula(cedula);
+    }
 }

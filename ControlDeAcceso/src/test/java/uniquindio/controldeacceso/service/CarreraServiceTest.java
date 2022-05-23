@@ -42,7 +42,7 @@ public class CarreraServiceTest {
     }
 
     @Test
-    @Sql("classpath:carrerasPrueba.sql")
+    @Sql("classpath:carreraPrueba.sql")
     public void actualizarCarreraId(){
         //obtenemos y actualizamos la carrera
         Carrera carrera = carreraService.findById(1);
@@ -55,7 +55,7 @@ public class CarreraServiceTest {
     }
 
     @Test
-    @Sql("classpath:carrerasPrueba.sql")
+    @Sql("classpath:carreraPrueba.sql")
     public void eliminarCarrera(){
         //eliminamos la carrera
         carreraService.delete(1);

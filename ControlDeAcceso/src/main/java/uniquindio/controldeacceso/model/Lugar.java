@@ -21,7 +21,7 @@ import java.util.List;
 public class Lugar implements Serializable {
 
     @Id
-    @Column(name="codigo")
+    @Column(name="codigo_lugar")
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigoLugar;

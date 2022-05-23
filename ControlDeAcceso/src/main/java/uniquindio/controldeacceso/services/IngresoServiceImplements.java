@@ -7,6 +7,7 @@ import uniquindio.controldeacceso.dao.IngresoDao;
 import uniquindio.controldeacceso.model.Ingreso;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,5 +34,18 @@ public class IngresoServiceImplements implements IngresoService{
     @Transactional(readOnly=false)
     public void delete(Integer id){
         ingresoDao.deleteById(id);
+    }
+
+    @Override
+    @Transactional(readOnly=true)
+    public List<Ingreso> findByCedula(Integer cedula) {
+        List<Ingreso>ingresos = findAll();
+        List<Ingreso>ingresosUsuario = new ArrayList<>();
+        for (Ingreso ingreso:ingresos) {
+            if(ingreso.getUsuario().getCedula().equals(cedula)){
+                ingresosUsuario.add(ingreso);
+            }
+        }
+        return ingresosUsuario;
     }
 }

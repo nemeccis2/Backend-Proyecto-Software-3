@@ -5,15 +5,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import uniquindio.controldeacceso.ControlDeAccesoApplication;
-import uniquindio.controldeacceso.exceptions.DatosInvalidosException;
-import uniquindio.controldeacceso.exceptions.UsuarioNoEncontradoException;
 import uniquindio.controldeacceso.model.Carrera;
 import uniquindio.controldeacceso.model.Rol;
 import uniquindio.controldeacceso.model.Usuario;
 import uniquindio.controldeacceso.services.CarreraService;
-import uniquindio.controldeacceso.services.LugarService;
 import uniquindio.controldeacceso.services.RolService;
 import uniquindio.controldeacceso.services.UsuarioService;
 
@@ -35,48 +33,36 @@ public class UsuarioServicioTest {
 
     @Test
     public void guardarUsuario(){
-
         Usuario nuevoUsuario = inicializarUsuario(123);
-        Usuario usuarioGuardado = usuarioService.save(nuevoUsuario);
 
-        //se hace la comparacion
-        Assert.assertEquals(nuevoUsuario, usuarioGuardado);
+        int usuariosAntes = usuarioService.findAll().size();
+
+        usuarioService.save(nuevoUsuario);
+
+        int personasDespues = usuarioService.findAll().size();
+
+        Assert.assertNotEquals(personasDespues, usuariosAntes);
     }
 
     @Test
+    @Sql("classpath:rolPrueba.sql")
+    @Sql("classpath:carreraPrueba.sql")
+    @Sql("classpath:usuarioPrueba.sql")
     public void encontrarUsuarioId(){
-        //Creamos y guardamos el usuario
-        Usuario nuevoUsuario = inicializarUsuario(123);
-        usuarioService.save(nuevoUsuario);
+        Usuario usuario = usuarioService.findById(123);
 
-        //buscamos el usuario en la base de datos
-        Usuario usuarioEncontrado = usuarioService.findById(123);
-
-        //comprobamos que el usuario encontrado exista
-        Assert.assertEquals(usuarioEncontrado, nuevoUsuario);
-    }
-
-    @Test
-    public void encontrarCorreoContrasenia(){
-        Usuario nuevoUsuario = inicializarUsuario(123);
-        usuarioService.save(nuevoUsuario);
-
-        try {
-            Usuario usuarioEncontrado = usuarioService.findByCorreoAndPassword("juan@gmail.com","1234");
-            Assert.assertEquals(nuevoUsuario,usuarioEncontrado);
-        } catch (UsuarioNoEncontradoException | DatosInvalidosException e) {
+        if(usuario.equals(null)){
             Assert.fail();
         }
+        Assert.assertEquals("David Alberto",usuario.getNombres());
     }
 
+    @Sql("classpath:rolPrueba.sql")
+    @Sql("classpath:carreraPrueba.sql")
     public Usuario inicializarUsuario(Integer cedula){
         //Entidades previas a la principal probada en esta clase
-        Carrera carrera = new Carrera(1, "Ingeniera de sistemas", new ArrayList<Usuario>());
-        carreraService.save(carrera);
-
-        Rol rol = new Rol(1, "Estudiante", new ArrayList<Usuario>());
-        rolService.save(rol);
-
+        Carrera carrera = carreraService.findById(1);
+        Rol rol = rolService.findById(1);
         Date date = new Date(System.currentTimeMillis());
 
         //se crea la entidad y se guarda
@@ -85,17 +71,17 @@ public class UsuarioServicioTest {
         return nuevoUsuario;
     }
     @Test
+    @Sql("classpath:rolPrueba.sql")
+    @Sql("classpath:carreraPrueba.sql")
+    @Sql("classpath:usuarioPrueba.sql")
     public void encontrarUsuarioEmail(){
-        Usuario usuario = inicializarUsuario(123);
-
-        //Se busca el usuario dando el email
-        boolean encontrado1 = usuarioService.existsByEmail("juan@gmail.com");
-        boolean encontrado2 = usuarioService.existsByEmail("juan2@gmail.com");
-
-        //buscamos si el usuario se encontró con un correo real y esperamos que el resultado sea true
-        Assert.assertTrue(encontrado1);
-        //buscamos si el usuario se encontró con un correo falso y esperamos que el resultado sea false
-        //Assert.assertFalse(encontrado2);
+        try{
+            Usuario usuarioEncontrado = usuarioService.findbyCorreo("davida.martinezg@uqvirtual.edu.co").orElse(null);
+            int cedulaEncontrada = usuarioEncontrado.getCedula();
+            Assert.assertEquals(123,cedulaEncontrada);
+        }catch (Exception e){
+            Assert.fail();
+        }
 
     }
 

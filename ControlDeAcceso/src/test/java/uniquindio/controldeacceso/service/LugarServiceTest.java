@@ -13,7 +13,6 @@ import uniquindio.controldeacceso.services.LugarService;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
-import java.util.Optional;
 
 @Transactional
 @RunWith(SpringJUnit4ClassRunner.class)

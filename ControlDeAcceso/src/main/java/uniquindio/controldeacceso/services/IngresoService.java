@@ -10,4 +10,6 @@ public interface IngresoService {
     public Ingreso save(Ingreso ingreso);
     public Ingreso findById(Integer id);
     public void delete(Integer id);
+
+    public List<Ingreso> findByCedula(Integer cedula);
 }
