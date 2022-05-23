@@ -54,7 +54,7 @@ public class Usuario implements Serializable {
     @ToString.Exclude
     private String password;
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario" ,cascade = CascadeType.REMOVE)
     @ToString.Exclude
     @JsonIgnore
     private List<Ingreso> ingresos;

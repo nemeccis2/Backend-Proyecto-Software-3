@@ -1,0 +1,2 @@
+insert into usuario values (123, "Martinez Garcia", "3223120453", "davida.martinezg@uqvirtual.edu.co", "calle 6N #18-20", null, "David Alberto", "12345", 1,1);
+insert into usuario values (456, "Tamayo Amariles", "3218419751", "juanc.tamayoa@uqvirtual.edu.co", "Al frente del portal", null, "Juan Camilo", "12345", 1,1);
