@@ -59,7 +59,6 @@ public class UsuarioServiceImplements implements UsuarioService {
     public Usuario findByCorreoAndPassword(String correo, String password) throws UsuarioNoEncontradoException, DatosInvalidosException {
         Usuario usuarioCorreo = usuarioDao.findByCorreo(correo).orElseThrow(() -> new UsuarioNoEncontradoException("Usuario incorrecto"));
         StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
-
         if(passwordEncryptor.checkPassword(password, usuarioCorreo.getPassword())){
             return usuarioCorreo;
         }else{
