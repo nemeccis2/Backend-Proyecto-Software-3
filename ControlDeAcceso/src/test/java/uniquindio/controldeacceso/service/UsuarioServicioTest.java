@@ -32,7 +32,7 @@ public class UsuarioServicioTest {
     public RolService rolService;
 
     @Test
-    public void guardarUsuario(){
+    public void guardarUsuario() {
         Usuario nuevoUsuario = inicializarUsuario(123);
 
         int usuariosAntes = usuarioService.findAll().size();
@@ -48,41 +48,37 @@ public class UsuarioServicioTest {
     @Sql("classpath:rolPrueba.sql")
     @Sql("classpath:carreraPrueba.sql")
     @Sql("classpath:usuarioPrueba.sql")
-    public void encontrarUsuarioId(){
+    public void encontrarUsuarioId() {
         Usuario usuario = usuarioService.findById(123);
 
-        if(usuario.equals(null)){
-            Assert.fail();
-        }
-        Assert.assertEquals("David Alberto",usuario.getNombres());
+        Assert.assertEquals("David Alberto", usuario.getNombres());
     }
 
     @Sql("classpath:rolPrueba.sql")
     @Sql("classpath:carreraPrueba.sql")
-    public Usuario inicializarUsuario(Integer cedula){
+    public Usuario inicializarUsuario(Integer cedula) {
         //Entidades previas a la principal probada en esta clase
         Carrera carrera = carreraService.findById(1);
         Rol rol = rolService.findById(1);
         Date date = new Date(System.currentTimeMillis());
 
-        //se crea la entidad y se guarda
-        Usuario nuevoUsuario = new Usuario(cedula, "Juan Andres", "Paredes Villamil", carrera, rol, date, "Calle 10N #20-48", "3111111111", "juan@gmail.com", "1234", new ArrayList<>());
-
-        return nuevoUsuario;
+        return new Usuario(cedula, "Juan Andres", "Paredes Villamil", carrera, rol, date,
+                "Calle 10N #20-48", "3111111111", "juan@gmail.com", "1234", new ArrayList<>());
     }
+
     @Test
     @Sql("classpath:rolPrueba.sql")
     @Sql("classpath:carreraPrueba.sql")
     @Sql("classpath:usuarioPrueba.sql")
-    public void encontrarUsuarioEmail(){
-        try{
-            Usuario usuarioEncontrado = usuarioService.findbyCorreo("davida.martinezg@uqvirtual.edu.co").orElse(null);
-            int cedulaEncontrada = usuarioEncontrado.getCedula();
-            Assert.assertEquals(123,cedulaEncontrada);
-        }catch (Exception e){
+    public void encontrarUsuarioEmail() {
+        Usuario usuarioEncontrado = usuarioService.findbyCorreo("davida.martinezg@uqvirtual.edu.co").orElse(null);
+        if (usuarioEncontrado == null) {
             Assert.fail();
-        }
 
+        }else{
+            int cedulaEncontrada = usuarioEncontrado.getCedula();
+            Assert.assertEquals(123, cedulaEncontrada);
+        }
     }
 
 

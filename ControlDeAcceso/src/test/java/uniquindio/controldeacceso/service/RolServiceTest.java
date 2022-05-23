@@ -59,13 +59,14 @@ public class RolServiceTest {
     @Test
     @Sql("classpath:rolPrueba.sql")
     public void encontrarPorNombre() {
-        try {
             Rol rolBuscado = rolService.findByNombreRol("Estudiante").orElse(null);
-            int idBuscado = rolBuscado.getCodigoRol();
-            Assert.assertEquals(1, idBuscado);
-        }catch (Exception e){
-            Assert.fail();
-        }
+            if(rolBuscado==null){
+                Assert.fail();
+            }else{
+                int idBuscado = rolBuscado.getCodigoRol();
+                Assert.assertEquals(1, idBuscado);
+            }
+
     }
 
 

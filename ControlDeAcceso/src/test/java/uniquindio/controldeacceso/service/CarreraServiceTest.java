@@ -14,16 +14,16 @@ import uniquindio.controldeacceso.services.CarreraService;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 
-    @Transactional
-    @RunWith(SpringJUnit4ClassRunner.class)
-    @SpringBootTest(classes = ControlDeAccesoApplication.class)
+@Transactional
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = ControlDeAccesoApplication.class)
 public class CarreraServiceTest {
 
     @Autowired
     public CarreraService carreraService;
 
     @Test
-    public void registrarCarrera(){
+    public void registrarCarrera() {
         //creamos el objeto a guardar
         Carrera carrera = new Carrera(4, "Ingenieria de sistemas", new ArrayList<>());
 
@@ -37,13 +37,13 @@ public class CarreraServiceTest {
         int carrerasDespues = carreraService.findAll().size();
 
         //comparamos las cantidades para ver si son distintos
-        Assert.assertNotEquals(carrerasAntes,carrerasDespues);
+        Assert.assertNotEquals(carrerasAntes, carrerasDespues);
 
     }
 
     @Test
     @Sql("classpath:carreraPrueba.sql")
-    public void actualizarCarreraId(){
+    public void actualizarCarreraId() {
         //obtenemos y actualizamos la carrera
         Carrera carrera = carreraService.findById(1);
         carrera.setNombreCarrera("Ingenieria de sistemas y computacion");
@@ -56,7 +56,7 @@ public class CarreraServiceTest {
 
     @Test
     @Sql("classpath:carreraPrueba.sql")
-    public void eliminarCarrera(){
+    public void eliminarCarrera() {
         //eliminamos la carrera
         carreraService.delete(1);
         Carrera carreraBuscada = carreraService.findById(1);
